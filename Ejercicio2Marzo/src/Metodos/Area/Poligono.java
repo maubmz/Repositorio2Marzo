@@ -48,6 +48,10 @@ public class Poligono extends Area {
     }
 
     //estos metodos solo daran el resultado
+    /*
+
+    ALTA COHESION
+    en esta clase solo se usara para us unico fin q es crear el poligono y reescribir los metodos q ya fueron hechos en la clase area
     public void  perimetroCuadrado(float lado1){
         System.out.println("El perimetro es:");
         perimetro(lado1);
@@ -60,6 +64,7 @@ public class Poligono extends Area {
         //System.out.println("El perimetro es:");
         perimetro(lado1,lado2,lado3);
     }
+     */
 
     //sobreesctritura
     //Los metodos explican como se obtienen los perimetros y dan el resultado

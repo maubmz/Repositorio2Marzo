@@ -13,7 +13,6 @@ public class Area {
     public void perimetro(float lado1, float lado2){
         System.out.println(lado1+lado1+lado2+lado2);
     }
-
     public void perimetro(float lado1, float lado2, float lado3){
         System.out.println(lado1+lado2+lado3);
     }
