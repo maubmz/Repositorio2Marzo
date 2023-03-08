@@ -38,4 +38,8 @@ public class Empleado {
     public void setNomEncargado(String nomEncargado) {
         this.nomEncargado = nomEncargado;
     }
+
+    /*protected void metodo(){
+
+    }*/
 }

@@ -20,4 +20,8 @@ public class Sellador extends Empleado {
     public void setTurno(String turno) {
         this.turno = turno;
     }
+
+     /*private void metodo(){
+
+    }*/
 }
