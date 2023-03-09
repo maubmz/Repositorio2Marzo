@@ -3,13 +3,16 @@ package PalabReservStatic;
 public class Jugador {
     private String nombre;
     private int numJugador;
+
+    //static es de la clase
     private static int goles;
 
     public Jugador(String nombre){
         this.nombre = nombre;
         this.numJugador = ++goles;
-    }
 
+    }
+//se hacen sus getters y setters
     public int getNumJugador() {
         return this.numJugador;
     }
@@ -27,6 +30,6 @@ public class Jugador {
     }
 
     public String toString(){
-        return "numJugador: " +numJugador +" , nombre: "+nombre+" , goles:"+goles;
+        return "Numero de jugador: " +numJugador +" , Nombre del jugador: "+nombre+" , Goles:"+goles;
     }
 }
