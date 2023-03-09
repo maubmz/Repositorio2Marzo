@@ -5,37 +5,38 @@ import java.util.Map;
 
 public class Producto {
     protected String nombreProducto;
-    protected int anioCaducidad;
     protected double precio;
-    Map<String , Double> listaCompra = new HashMap();
+    static Map<String , Double> listaProductosVenta = new HashMap();
 
-    public Producto(String nombreProducto, int anioCaducidad, double precio) {
+    public Producto() {
+
+    }
+
+    public Producto(String nombreProducto, double precio) {
         this.nombreProducto = nombreProducto;
-        this.anioCaducidad = anioCaducidad;
         this.precio = precio;
+        listaProductosVenta.put(nombreProducto, precio);
+    }
+
+    public void mostrarProductosVenta(){
+        System.out.println(listaProductosVenta.entrySet());
     }
 
     public void productosAComprar(Producto producto){
-        listaCompra.put(producto.getNombreProducto(), producto.getPrecio());
+        listaProductosVenta.put(producto.getNombreProducto(), producto.getPrecio());
     }
 
-    public void totalPrecio() {
-
-        double precioTotal;
-        precioTotal = listaCompra.get(nombreProducto);
+    public void infoProducto(){
+        System.out.println("El nombre del producto es: "+getNombreProducto());
+        System.out.println("El precio del producto es: "+getPrecio());
     }
 
     public String getNombreProducto() {
         return nombreProducto;
     }
 
-    public int getAnioCaducidad() {
-        return anioCaducidad;
-    }
-
     public double getPrecio() {
         return precio;
     }
-
 
 }
