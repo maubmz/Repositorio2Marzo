@@ -6,9 +6,18 @@ public class Productos {
     private int precio;
     private String codigo;
 
-    public Productos(String nombreProducto,int precio, String codigo) {
+    public Productos() {
+    }
+    public Productos(String nombreProducto, int precio, String codigo) {
         this.nombreProducto = nombreProducto;
         this.precio = precio;
+        this.codigo = codigo;
+    }
+    public Productos(String nombreProducto,int precio) {
+        this.nombreProducto = nombreProducto;
+        this.precio = precio;
+    }
+    public Productos(String codigo) {
         this.codigo = codigo;
     }
 
