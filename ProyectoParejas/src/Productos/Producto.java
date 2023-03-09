@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Producto extends Productos{
+    public static Map<Integer,Producto> productos = new HashMap<>();
     public Producto(String nombreProducto, int precio) {
 
         super(nombreProducto, precio);
     }
     public static void INVENTARIO(){
-        Map<Integer,Producto> productos = new HashMap<>();
         productos.put(1,new Producto("leche", 25));
         productos.put(2,new Producto("cereal", 50));
         productos.put(3,new Producto("agua", 10));
