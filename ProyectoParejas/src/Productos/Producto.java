@@ -20,8 +20,12 @@ public class Producto extends Productos{
         productos.put(8,new Producto("picafresa", 5));
         productos.put(9,new Producto("cafe", 23));
         productos.put(10,new Producto("cheetos", 21));
+    }
+    public static String invetarioString(){
+        String ej = "";
         for (Integer key : productos.keySet()){
-            System.out.println(key + " => " + productos.get(key).getNombreProducto()+" $"+productos.get(key).getPrecio());
+            ej +=  key + " => " + productos.get(key).getNombreProducto()+" $"+productos.get(key).getPrecio()+"\n";
         }
+        return ej;
     }
 }

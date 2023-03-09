@@ -29,6 +29,9 @@ public class Cliente extends Persona{
     public void getCanasta(){
         canasta.VerCanasta();
     }
+    public String canastaString(){
+        return canasta.productosCanasta();
+    }
     public void agregarCanasta(Producto producto){
         canasta.Agregar(producto);
     }

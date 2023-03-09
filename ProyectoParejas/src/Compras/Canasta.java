@@ -25,6 +25,15 @@ public class Canasta {
             System.out.println(i.getNombreProducto() + " -- " +i.getPrecio() );
         }
     }
+    public String productosCanasta(){
+        String temp="";
+        for (Producto i:lista) {
+            String canasta= i.getNombreProducto() + " -- " + i.getPrecio()+"\n";
+            temp=+canasta;
+            temp+=canasta;
+        }
+        return temp;
+    }
 
     public ArrayList<Producto> getLista() {
         return lista;
