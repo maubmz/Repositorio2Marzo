@@ -26,13 +26,11 @@ public class Canasta {
         }
     }
     public String productosCanasta(){
-        String temp="";
+        StringBuilder temp= new StringBuilder();
         for (Producto i:lista) {
-            String canasta= i.getNombreProducto() + " -- " + i.getPrecio()+"\n";
-            temp=+canasta;
-            temp+=canasta;
+            temp.append(i.getNombreProducto() + " -- " + "$"+i.getPrecio()+"\n");
         }
-        return temp;
+        return temp.toString();
     }
 
     public ArrayList<Producto> getLista() {

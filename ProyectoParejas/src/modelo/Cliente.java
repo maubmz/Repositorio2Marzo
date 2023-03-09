@@ -5,11 +5,10 @@ import Productos.Producto;
 
 public class Cliente extends Persona{
     private float totalCuenta;
-    private Canasta canasta = new Canasta();
+    private final Canasta canasta = new Canasta();
 
     public Cliente(String nombre, String apellido) {
         super(nombre, apellido);
-        this.totalCuenta = totalCuenta;
     }
 
     public float getTotalCuenta() {

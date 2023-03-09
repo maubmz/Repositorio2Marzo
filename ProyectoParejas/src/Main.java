@@ -6,7 +6,13 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        Cliente cliente = new Cliente("Valeria","Gonzales");
+        controller();
+    }
+
+    static public void controller(){
+        String nombre=JOptionPane.showInputDialog("Nombre del cliente");
+        String apellido=JOptionPane.showInputDialog("Apellido del cliente");
+        Cliente cliente = new Cliente(nombre,apellido);
         Producto.INVENTARIO();
         cliente.getCanasta();
         System.out.println("Precio total: " +cliente.precioTotal());
@@ -15,10 +21,11 @@ public class Main {
         int numeroProductos= Integer.parseInt(n);
         for (int i = 0; numeroProductos > i; i++) {
             String n1=JOptionPane.showInputDialog("Numero del prodcuto");
-            int numeroProductos1= Integer.parseInt(n);
+            int numeroProductos1= Integer.parseInt(n1);
             cliente.agregarCanasta(Producto.productos.get(numeroProductos1));
         }
         JOptionPane.showMessageDialog(null, "Cliente: " +cliente.getNombre()+" "+cliente.getApellido()+"\n"
-        +cliente.canastaString());
+                +cliente.canastaString() + "\n\n" + "Total a PAGAR: " + "$"+ cliente.precioTotal());
+
     }
 }
