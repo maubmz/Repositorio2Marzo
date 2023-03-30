@@ -1,0 +1,48 @@
+body{
+     font-family: sans-serif;
+     margin: 0;
+}
+header{
+    display: flex;
+    height: 70px;
+    background-color: rgb(241, 161, 132);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+nav a{
+    font-weight: 600;
+    padding-right: 10px;
+} 
+caption{
+height: 30px;
+font-weight: bold;
+color:rgb(241, 107, 134);
+}
+th{
+    text-align: center;
+    color: #504343;
+    background: #eebe9e;
+}
+td{
+    text-align: justify;
+    color: #271818;
+    font-size: small;
+    vertical-align:middle;
+}
+.primerSabor{
+    background: #f8ee67;
+
+}
+.segundoSabor{
+    background: #8191ee;
+
+}
+.tercerSabor{
+    background: #eb9595;
+
+}
+.cuartoSabor{
+    background: #f0995f;
+
+}

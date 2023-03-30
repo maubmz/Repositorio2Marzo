@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <title>Refresco Patito</title>
+    </head>
+    <body>
+        <header>
+            <div class="logotipo">
+                <h1 class="empresa">Refrescos Patito</h1> 
+        </div>
+        <nav>
+            <a href="" class="enlaces">Inicio</a>
+            <a href="" class="enlaces">Contacto</a>
+            <a href="" class="enlaces">Catalogo</a>
+            <a href="" class="enlaces">Extra</a>
+        </nav>
+        </header>
+        <br>
+        <table width="500" border="1">
+            <caption>Producto</caption>
+            <tr>
+                <th>
+                    Sabor
+                </th>
+                <th>
+                    Puntos de Venta
+                </th>
+                <th>
+                    Stock
+                </th>
+            </tr>
+            <tr class="primerSabor">
+                <td>
+                    Patito Piña
+                </td>
+                <td>
+                    Mexico DF, Oaxaca, Michoacan   
+                </td>
+                <td>
+                    399
+                </td>
+            </tr>
+            <tr class="segundoSabor">
+                <td>
+                    Patito Uva
+                </td>
+                <td>
+                    Baja California, Morelia, Guerrero   
+                </td>
+                <td>
+                    356
+                </td>
+            </tr>
+            <tr class="tercerSabor">
+                <td>
+                    Patito Manzana
+                </td>
+                <td>
+                    Mexico DF, Chihuahua, Coahuila 
+                </td>
+                <td>
+                    677
+                </td>
+            </tr>
+            <tr class="cuartoSabor">
+                <td>
+                    Patito Naranja
+                </td>
+                <td>
+                    Monterrey, Michoacan, Oaxaca   
+                </td>
+                <td>
+                    279
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table width="200" id="columnas">
+        <caption>
+            Registro de Pedido
+        </caption>
+        <tr>
+            <td class="PrimColumn">
+                Nombre Comprador:
+            </td>
+            <td>
+                <input class="default" type="text" name="comprador" value="Nombre Comprador"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="primColumn">
+                Localidad
+            </td>
+            <td>
+                <select name="Localidad" class="default">
+                    <option value="1">Mexico DF</option>
+                    <option value="2">Oaxaca</option>
+                    <option value="3">Michoacan</option>
+                    <option value="4">Guerrero</option>
+                    <option value="5">Morelia</option>
+                    <option value="6">Coahuila</option>
+                    <option value="7">Baja California</option>
+                    <option value="8">Monterrey</option>
+                    <option value="9">Chihuahua</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="primColumn">
+                Elegir Sabor
+            </td>
+            <td>
+                <select name="sabor" multiple class="default">
+                    <option value="piña">Patito Piña</option>
+                    <option value="uva">Patito Uva</option>
+                    <option value="manzana">Patito Manzana</option>
+                    <option value="Naranja">Patito Naranja</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="primColumn">
+                Cantidad de Refrescos
+            </td>
+            <td>
+                <textarea name="cantidad" cols="10" rows="2" class="default">
+                    Cantidad
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="primColumn">
+                Tipo Pago
+            </td>
+            <td>
+                MasterCard <input type="radio" name="tarjeta" value="mastercard">
+                VISA <input type="radio" name="tajeta" value="visa">               
+                BBVA <input type="radio" name="tarjeta" value="bbva">               
+                CityBanamex <input type="radio" name="tarjeta" value="citybanamex">
+            </td>
+        </tr>
+        <tr style="text-align: center;">
+            <td>
+                <input type="reset" value="Borrar" class="default">
+            </td>
+            <td>
+                <input type="submit" value="Enviar" class="default">
+            </td>
+        </tr>
+        </table>
+    </body>
+</html>

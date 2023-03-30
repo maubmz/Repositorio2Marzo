@@ -1,0 +1,27 @@
+.calculadora{
+    margin: 50px;
+    width: 250;
+    text-align: center;
+    border: 3px  ridge;
+    border-radius: 7px;
+    padding: 10;
+}
+button{
+    width: 50px;
+    height: 50;
+    font-size: 20;
+    margin: 1px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: cornflowerblue;
+}
+.resultado{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10;
+    text-align: right;
+}
+

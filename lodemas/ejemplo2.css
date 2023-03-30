@@ -1,0 +1,41 @@
+body{
+    background-color: lightgray;
+}
+h1{
+    text-align: center;
+    color: indianred;
+}
+p{
+    text-align: justify;
+    color: deeppink;
+}
+ul{
+   list-style-type: none;
+}
+li{
+    background-color: cadetblue;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+li:hover{
+    color: black;
+}
+.impar{
+    font-weight: bold;
+    color: navy;
+}
+
+@media screen and (max-width: 750px){
+    p{
+        font-size: 15px;
+    }
+    li{
+        margin-bottom: 3px;
+        padding-bottom: 5px;
+    }
+    .impar{
+        color: crimson;
+
+    }
+    
+}
