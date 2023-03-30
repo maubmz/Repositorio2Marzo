@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Calculadora</title>
+    <link rel='stylesheet' type='text/css' href='estilos.css'>
+    <script defer src='acciones.js'></script>
+</head>
+<body>
+    <div class="Calculadora">
+        <input  class="resultado" type="text" placeholder="0" value="0">
+            <h1>Calculadora</h1>   
+                    <button onclick="borrar()">C</button>
+                    <button onclick="operadores('()')">()</button>
+                    <button onclick="operadores('%')">%</button>       
+                    <button onclick="operadores('/')">/</button>         
+            
+                    <button onclick="addNumber('7')">7</button>
+                    <button onclick="addNumber('8')">8</button>
+                    <button onclick="addNumber('9')">9</button>        
+                    <button onclick="addNumber('*')">X</button>
+           
+                    <button onclick="addNumber('4')">4</button>
+                    <button onclick="addNumber('5')">5</button>             
+                    <button onclick="addNumber('6')">6</button>             
+                    <button onclick="operadores('-')">-</button>
+
+                    <button onclick="addNumber('1')">1</button>              
+                    <button onclick="addNumber('2')">2</button>              
+                    <button onclick="addNumber('3')">3</button>             
+                    <button onclick="operadores('+')">+</button>
+
+                    <button onclick="borrarNumero()">Del</button>
+                    <button onclick="addNumber('0')">0</button>
+                    <button onclick="operadores('.')">.</button>
+                    <button onclick="calculoFinal()">=</button>
+           
+    </div>
+</body>
+</html>

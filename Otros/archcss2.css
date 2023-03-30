@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(253, 153, 116);
+}
+h1{
+    text-align: center;
+    color: cadetblue;
+}
+p{
+    text-align: justify;
+    color: black;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    background-color: darkseagreen;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+li:hover{
+    color: black;
+}
+
+.Clase0{
+    font-weight: bold;
+    color: blue;
+}
+
+@media screen and (max-width:750px){
+    p{
+        font-size: 3px;
+    }
+    li{
+        margin-bottom: 3px;
+        padding: 5px;
+    }
+    .Clase0{
+        color: rgb(243, 6, 6);
+    }
+}
