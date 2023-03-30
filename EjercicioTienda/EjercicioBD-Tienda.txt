@@ -1,0 +1,29 @@
+--ENTIDADES---
+CLIENTE
+FACTURA
+PRODUCTO
+
+--ATRIBUTOS---
+CLIENTE
+-*ID_cliente
+-nombre
+-apellido
+-telefono
+-ID_factura
+
+FACTURA
+-*ID_factura
+-Fecha de compra
+-Numero de Productos
+-Costo
+
+PRODUCTO
+-*ID_producto
+-Nombre
+-Precio
+
+---RELACIONES----
+-CLIENTE/FACTURA (1-n)
+-FACTURA/PRODUCTO (n-n)
+-PRODUCTO/CLIENTE (n-n) /sobra
+

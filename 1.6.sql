@@ -1,0 +1,25 @@
+# CREAR TABLA CON SOLO 2 COLUMNAS, ELIMINAR UNA COLUMNA, ELIMINAR TABLA 
+# Y HACER UNA CONSULTA CON LIFT JOIN CON LAS TABLAS QUE YA SE TIENEN (QUE PUEDO HABER CASILLAS NULAS DE AMBOS LADOS)
+
+CREATE TABLE tabla1(
+nombre varchar(15),
+apellido varchar(20)
+);
+
+ SELECT *
+ FROM tabla1;
+
+
+ ALTER TABLE tabla1 
+ DROP COLUMN apellido;
+ 
+ SELECT *
+ FROM tabla1;
+ 
+ DROP TABLE tabla1;
+ 
+ SELECT *
+ FROM profesor 
+ LEFT JOIN profesor_viaje
+ ON profesor.nombre = profesor_viaje.CURP2;
+ 
