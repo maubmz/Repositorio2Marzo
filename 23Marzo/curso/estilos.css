@@ -1,0 +1,81 @@
+*{
+    background-color: azure;
+    font-family: cursive;
+}
+h1{
+    font-size: 2em;
+    font-style: italic;
+    padding: 5px 5px 0 5px;
+    margin: 0 0 15px 0;
+    color: blue;
+}
+p{
+    font-weight: bolder;
+    color: blueviolet;
+}
+.resaltado{
+    color: white;
+    font-weight: bold;
+    background-color: deeppink;
+}
+.nuevaClaseCss{
+    color: darkcyan;
+    font-family: fantasy;
+    background-color: darkgray;
+}
+div.tab{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/002/299/571/non_2x/mexican-cartoon-tacos-al-pastor-with-onions-and-cilantro-clip-art-illustration-with-simple-gradients-vector.jpg);
+    display:block;
+    float: left;
+    height: 21px;
+    padding: 0;
+    margin: 0 1px 0 0;
+    background-repeat: no-repeat;
+}
+div.tab div{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH5wAEx221DUYZH5GAY2IE1VObJCdhY-Cw7g&usqp=CAU);
+    background-repeat: no-repeat;
+    background-position: top right;
+    height: 21px;
+    float: left;
+    margin: 0;
+}
+div.tab div a{
+    margin: 0 8px;
+    height: 21px;
+    line-height: 21px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ByfP4Ac2dDLs4umVCtmNpi4_Zaj6xY0ivSQodZUAMPOzUVYRpd-H7hRwB7CjtuIGfPI&usqp=CAU);
+    text-decoration: none;
+    vertical-align: middle;
+    float: left;
+    background-repeat: repeat;
+}
+a:link, a:visited{
+    color:deeppink;
+    text-decoration: underline;
+}
+a:active, a:hover{
+    color: lawngreen;
+}
+caption{
+    height: 30px;
+    font-weight: bold;
+    color: red;
+}
+th{
+    text-align: center;
+    color: aqua;
+    background-color: black;
+}
+td{
+    text-align: justify;
+    color: deeppink;
+    font-size: small;
+    vertical-align: middle;
+}
+.row1{
+    background-color: black;
+}
+.row2{
+    background-color: darkgrey;
+}

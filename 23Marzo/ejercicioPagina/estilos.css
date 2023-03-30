@@ -1,0 +1,85 @@
+*{
+    background-color: antiquewhite;
+}
+div{
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    background-image: url("fondoVarios.jpg");
+    background-attachment: fixed;
+}
+h1{
+    text-align: center;
+    color:deeppink;
+    background-color: none;
+    font-size: 50px;
+}
+select{
+    margin-top: 25px;
+    border-top: 100px;
+}
+caption{
+    color: red;
+    font-size: 35px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+table{
+    border: red 5px solid;
+    text-align: center;
+    width: 500px;
+}
+tr:hover td{
+    color: deeppink;
+    background: black;
+    font-size: 30px;
+}
+th{
+    font-size: 30px;
+}
+td{
+    font-size: 20px;
+    border: red 1px solid;
+}
+select{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100px;
+}
+.elegirTamanio{
+    text-align: center;
+}
+.divTamaño{
+    font-size: 30px;
+    background-color: gainsboro;
+    text-align: center;
+}
+.cantidad{
+    text-align: center;
+    font-size: 30px;
+    display: grid;
+    justify-content: center;
+}
+p{
+    text-align: center;
+}
+.elegir{
+    font-size: 30px;
+}
+select{
+    font-size: 18px;
+    height:  40px;
+    width: 100px;
+}
+.tamaño{
+    font-size: 30px;
+}
+input{
+    font-size: 20px;
+}
+.botones{
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+}

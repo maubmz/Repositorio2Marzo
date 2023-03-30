@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Lomba</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div>
+        <h1>Aguas de sabor</h1>
+        <table>
+            <caption>Aguas:</caption>
+            <tr>
+                <th></th>
+                <th>Precio</th>
+            </tr>
+            <tr>
+                <th>Agua</th>
+                <th>Chica</th>
+                <th>Grande</th>
+            </tr>
+            <tr class="row1">
+                <td>Horchata</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+            <tr class="row2">
+                <td>limon</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+            <tr class="row1">
+                <td>Fresa</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+            <tr class="row2">
+                <td>Platano</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+            <tr class="row1">
+                <td>Guayaba</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+            <tr class="row2">
+                <td>Mango</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+        </table>
+        <p class="elegir"> Elija la de su mayor agrado:
+            <select name="Cual va a querer?:">
+                <option selected>Elegir</option>
+                <option>Horchata</option>
+                <option>Limon</option>
+                <option>Fresa</option>
+                <option>Platano</option>
+                <option>Guayaba</option>
+                <option>Mango</option>
+            </select>
+        </p>
+        <p class="tamaño">
+            <tr>
+                <td class="elegirTamanio">Tamaño:</td>
+                <td>
+                    <br> Chica <input type="radio" name="tamanio" value="C">
+                    Grande<input type="radio" name="tamanio" value="G">
+                </td>
+            </tr>
+        </p>
+        <div class="cantidad">
+            <p>
+                Cantidad:<input class="defalut" type="text" name="cantidad" value="Cuantas?" onfocus="this.select();">
+            </p>
+        </div>
+        <div class="botones">
+            <input type="reset" name="Limpiar" class="defalut">
+            <input type="submit" name="Enviar" class="defalut">
+
+        </div>
+        <p>
+            No olvides tomar agua simple ya que trae muchos
+            <a
+                href="https://www.gob.mx/salud/prensa/consumo-de-agua-brinda-beneficios-al-organismo-4604#:~:text=Al%20ser%20el%20principal%20componente,y%20mejorar%20la%20funci%C3%B3n%20digestiva">
+                beneficios</a>
+        </p>
+    </div>
+</body>
+
+</html>
