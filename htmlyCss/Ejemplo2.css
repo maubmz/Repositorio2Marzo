@@ -1,0 +1,39 @@
+body{
+    background-color: darksalmon;
+}
+h1{
+    text-align: center;
+    color: rgb(0, 255, 115);
+}
+p{
+    text-align: justify;
+    color: rgb(0, 255, 115);
+}
+ul{
+    list-style: none;
+}
+li{
+    background-color: burlywood;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+li:hover{
+    background-color: brown;
+}
+.clase_impar{
+    font-weight: 200;
+    color: blueviolet;
+}
+
+@media screen and (max-width: 750px){
+    p{
+        font-size: 3px;
+    }
+    li{
+        margin-bottom: 3px;
+        padding: 5px;
+    }
+    .clase_impar{
+        color: rgb(255, 140, 9);
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora</title>
+        <link rel="stylesheet" href="/Ejercicio/ArchivoCss.css">
+        <script defer src="ArchivoJs.js" ></script>
+    </head>
+    <body>
+        <h1>Calculadora en HTML</h1>
+        <div class="calculadora">
+            <input class="resultado" type="text" value="0" >
+            <!--placeholder agregar un valor que saldra cuando este vacio -->
+
+            <button id="1" onclick="addNumber('1')">1</button>
+            <button id="2" onclick="addNumber('2')">2</button>
+            <button id="3" onclick="addNumber('3')">3</button>
+            <button id="suma" onclick="operadores('+')">+</button>
+
+            <button id="4" onclick="addNumber('4')">4</button>
+            <button id="5" onclick="addNumber('5')">5</button>
+            <button id="6" onclick="addNumber('6')">6</button>
+            <button id="resta" onclick="operadores('-')">-</button>
+
+            <button id="7" onclick="addNumber('7')">7</button>
+            <button id="8" onclick="addNumber('8')">8</button>
+            <button id="9" onclick="addNumber('9')">9</button>
+            <button id="multiplicar" onclick="operadores('*')">x</button>
+
+            <button id="0" onclick="addNumber('0')">0</button>
+            <button id="borrar" onclick="borrar()">C</button>
+            <button id="division" onclick="operadores('/')">/</button>
+            <button id="resultado" onclick="calculoFinal()">=</button>
+
+            <button id="borrarNumero" onclick="borrarNumero()">Del</button>
+            <button id="punto" onclick="addNumber('.')">.</button>
+
+        </div>
+
+    </body>
+</html>

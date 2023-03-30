@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Frames en HTML</title>
+    </head>
+    <!--Frame externo-->
+    <!--Creamos un frame externo de dos columnas-->
+    <frameset cols="25%,*" frameborder="0" framespacing="0" border="0">
+        <!--Frame izquierda-->
+        <frame src="/seccion100/navegacion.html" name="navegacion">
+            <!--Frame derecha, es otro framset-->
+            <!--tiene dos renglones este frame-->
+        <frameset rows="30%,*">
+            <!--Frame superior-->
+            <frame src="/seccion100/titulo.html" name="titulo" scrolling="no">
+            <!--Frame inferior-->
+            <!--La informacion se despliega por el nombre del frame se otorga a los li y hace que cambie-->
+            
+            <frame src="/seccion100/contenidoInicial.html" name="contenido">
+        </frameset>
+        <noframes>
+            <!--Pagina que no pudo mostrar los frames-->  
+        </noframes>
+    </frameset>
+</html>

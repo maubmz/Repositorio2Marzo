@@ -1,0 +1,78 @@
+/* Selectores de etiqueta */
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: darkcyan;
+}
+h1{
+    font-size: 30px;
+    text-align: center;
+}
+h2{
+    font-size: 25px;
+    text-align: center;
+}
+p{
+    font-size: 15px;
+    text-align: justify;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    padding: 10;
+    margin-bottom: 5;
+    background-color: darkkhaki;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: chocolate;
+    padding: 20;
+}
+nav ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+nav li{
+    margin-right: 20px;
+}
+nav a:hover{
+    color: black;
+    text-decoration: none;
+}
+*{
+    background-color: darksalmon;
+}
+/* Selector de clase */
+.clase1{
+    color: darksalmon;
+}
+/* Grid */
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+/* Media Queries */
+@media screen and (max-width: 750px){
+    header{
+        flex-direction: column;
+    }
+    nav ul{
+        flex-direction: column;
+    }
+    nav li{
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    main{
+        grid-template-columns: 2fr;
+    }
+}

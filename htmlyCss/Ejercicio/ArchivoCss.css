@@ -1,0 +1,45 @@
+.boton{
+    background-color: aqua;
+}
+
+.calculadora{
+    margin: 50px;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: gray;
+}
+
+.resultado{
+    width: 230px;
+    height: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none;
+    text-align: right;
+}
+
+button{
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+button:hover {
+    background-color: orange;
+}
+
+/*
+input{
+    width: 230px;
+    height: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none;
+}*/
