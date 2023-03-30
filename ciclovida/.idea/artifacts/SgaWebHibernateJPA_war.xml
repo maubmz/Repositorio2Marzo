@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SgaWebHibernateJPA:war">
+    <output-path>$PROJECT_DIR$/SgaWebHibernateJPA/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SgaWebHibernateJPA</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SgaWebHibernateJPA.war">
+      <element id="artifact" artifact-name="SgaWebHibernateJPA:war exploded" />
+    </root>
+  </artifact>
+</component>
