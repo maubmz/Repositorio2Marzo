@@ -23,4 +23,6 @@ public class Producto {
     private Long productoId;
     private String nombreProducto;
     private Integer precio;
+
+
 }
