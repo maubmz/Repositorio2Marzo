@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -27,4 +28,13 @@ public class Cliente {
     @Column(name ="correo")
     private String correo;
 
+    /*@OneToMany(
+            mappedBy = "cliente",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true
+    )
+    private List<Factura> factura;
+
+     */
 }
