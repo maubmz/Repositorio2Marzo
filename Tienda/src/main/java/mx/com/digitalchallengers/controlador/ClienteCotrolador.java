@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/cliente")
+@RestController
 @Controller
 @Service
 public class ClienteCotrolador {
     @Autowired
     private ClienteRepositorio clienteRepositorio;
 
-    @GetMapping()
+    @GetMapping("/cliente")
     public List<Cliente> findAllClient(){
         return clienteRepositorio.findAll();
     }

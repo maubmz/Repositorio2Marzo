@@ -18,15 +18,16 @@ public class Factura {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
+    @Column(name = "id_factura",unique = true, nullable = false)
     private Long facturaId;
     private String fechaCompra;
 
     @ManyToOne(
             cascade = CascadeType.ALL
     )
-    @JoinColumn(
+     @JoinColumn(
             name = "id_cliente",
-            referencedColumnName = "clienteId"
+            referencedColumnName = "id_cliente"
     )
     private Cliente cliente;
 
@@ -37,11 +38,11 @@ public class Factura {
             name = "factura_producto",
             joinColumns = @JoinColumn(
                     name = "id_factura",
-                    referencedColumnName = "facturaId"
+                    referencedColumnName = "id_factura"
             ),
             inverseJoinColumns = @JoinColumn(
                     name = "id_producto",
-                    referencedColumnName = "productoId"
+                    referencedColumnName = "id_producto"
             )
     )
     private List<Producto> producto;
