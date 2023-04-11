@@ -28,13 +28,11 @@ public class Cliente {
     @Column(name ="correo")
     private String correo;
 
-    /*@OneToMany(
+    @OneToMany(
             mappedBy = "cliente",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     private List<Factura> factura;
 
-     */
+
 }

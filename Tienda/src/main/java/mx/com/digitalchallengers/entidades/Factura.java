@@ -26,7 +26,7 @@ public class Factura {
             cascade = CascadeType.ALL
     )
      @JoinColumn(
-            name = "id_cliente",
+            name = "id_cliente1",
             referencedColumnName = "id_cliente"
     )
     private Cliente cliente;
@@ -35,13 +35,13 @@ public class Factura {
             cascade = CascadeType.ALL
     )
     @JoinTable(
-            name = "factura_producto",
+            name = "producto_factura",
             joinColumns = @JoinColumn(
-                    name = "id_factura",
+                    name = "id_factura1",
                     referencedColumnName = "id_factura"
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "id_producto",
+                    name = "id_producto1",
                     referencedColumnName = "id_producto"
             )
     )

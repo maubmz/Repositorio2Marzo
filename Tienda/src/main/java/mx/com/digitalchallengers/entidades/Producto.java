@@ -19,6 +19,7 @@ public class Producto {
     )
     @Column(name = "id_producto",unique = true, nullable = false)
     private Long productoId;
+    @Column(name = "nom_producto")
     private String nombreProducto;
     private Integer precio;
 
