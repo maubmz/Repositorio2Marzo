@@ -1,5 +1,6 @@
 package mx.com.digitalchallengers.entidades;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,9 +31,11 @@ public class Cliente {
 
     @OneToMany(
             mappedBy = "cliente",
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
-    private List<Factura> factura;
+    @JsonManagedReference
+    private List<Factura> facturas;
 
 
 }

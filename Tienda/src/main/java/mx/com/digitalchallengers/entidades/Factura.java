@@ -1,5 +1,6 @@
 package mx.com.digitalchallengers.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Factura {
             name = "id_cliente1",
             referencedColumnName = "id_cliente"
     )
+    @JsonBackReference
     private Cliente cliente;
 
     @ManyToMany(
