@@ -2,8 +2,11 @@ package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
+import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
+import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
+import mx.com.digitalchallengers.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -36,12 +39,16 @@ public class FacturaControlador {
     }
 
     @PostMapping(
-            value = "/{id}",
+            value = "/create/{id}",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura,@PathVariable int id){
+    public void addFactura(@RequestBody Factura factura,@PathVariable Integer id,@RequestBody List<Producto> productos){
+        Cliente cliente = clienteRepositorio.findById(id).orElseThrow();
+        factura.setCliente(cliente);
+        factura.setProducto(productos);
         facturaRepositorio.save(factura);
         System.out.println("factura = " + factura);
+
     }
 
 
