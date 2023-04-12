@@ -1,5 +1,6 @@
 package mx.com.digitalchallengers.controlador;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +34,20 @@ public class ProductoControlador {
         return productoRepositorio.findById(id);
     }
 
-    @PostMapping(value = "/create", consumes = "application/json")
+    @PostMapping(
+            value = "/create",
+            consumes = "application/json"
+    )
     public void addProducto(@RequestBody Producto producto){
         productoRepositorio.save(producto);
         System.out.println("producto = " + producto);
     }
 
     @PutMapping("/{id}")
-    public void updateById(@PathVariable Long id, @RequestBody Producto productoDos){
+    public void updateById(@PathVariable Long id, @RequestBody Producto productoUpdate){
         Producto producto = productoRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Producto no encontrado"));
-        producto.setNombreProducto(productoDos.getNombreProducto());
-        producto.setPrecio(productoDos.getPrecio());
+        producto.setNombreProducto(productoUpdate.getNombreProducto());
+        producto.setPrecio(productoUpdate.getPrecio());
         productoRepositorio.save(producto);
     }
 

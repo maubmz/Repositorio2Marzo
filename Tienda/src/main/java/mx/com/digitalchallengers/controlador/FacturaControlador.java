@@ -27,6 +27,8 @@ public class FacturaControlador {
     private FacturaRepositorio facturaRepositorio;
     @Autowired
     private ClienteRepositorio clienteRepositorio;
+    @Autowired
+    private FacturaService facturaService;
 
     @GetMapping
     public List<Factura> findAllFactura(){
@@ -39,16 +41,12 @@ public class FacturaControlador {
     }
 
     @PostMapping(
-            value = "/create/{id}",
+            value = "/{id}",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura,@PathVariable Integer id,@RequestBody List<Producto> productos){
-        Cliente cliente = clienteRepositorio.findById(id).orElseThrow();
-        factura.setCliente(cliente);
-        factura.setProducto(productos);
-        facturaRepositorio.save(factura);
+    public void addFactura(@RequestBody Factura factura,@PathVariable Integer id){
+        facturaService.addFactura(factura,id);
         System.out.println("factura = " + factura);
-
     }
 
 
