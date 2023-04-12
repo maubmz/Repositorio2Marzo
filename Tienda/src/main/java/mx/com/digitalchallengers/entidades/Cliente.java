@@ -37,5 +37,4 @@ public class Cliente {
     @JsonManagedReference
     private List<Factura> facturas;
 
-
 }
