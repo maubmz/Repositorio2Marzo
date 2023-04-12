@@ -17,36 +17,42 @@ import java.util.Optional;
 @Controller
 @Service
 public class ProductoControlador {
+
     @Autowired
     private ProductoRepositorio productoRepositorio;
 
-    @Autowired
-    private FacturaControlador facturaControlador;
-
     @GetMapping
-    public List<Producto> findAllProducto() {
+    public List<Producto> findAllProducto(){
         return productoRepositorio.findAll();
     }
-
-    @GetMapping({"/{id}"})
-    public Optional<Producto> findByIdProducto(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public Optional<Producto> buscarPorIdProducto(@PathVariable(value = "id") Long id){
         return productoRepositorio.findById(id);
     }
 
-    @PostMapping(value = "/create", consumes = "application/json")
+    @PostMapping
+            (value = "/create",
+                    consumes = "application/json"
+            )
     public void addProducto(@RequestBody Producto producto){
         productoRepositorio.save(producto);
         System.out.println("producto = " + producto);
     }
 
-    @PutMapping("/{id}")
-    public void updateById(@PathVariable Long id, @RequestBody Producto productoDos){
+    @PutMapping(path = "/{id}")
+    public void updateById(@PathVariable Long id, @RequestBody Producto producto2){
         Producto producto = productoRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Producto no encontrado"));
-        producto.setNombreProducto(productoDos.getNombreProducto());
-        producto.setPrecio(productoDos.getPrecio());
+        producto.setNombreProducto(producto2.getNombreProducto());
+        producto.setPrecio(producto2.getPrecio());
         productoRepositorio.save(producto);
+        productoRepositorio.deleteById(id);
     }
 
-    
+    @PatchMapping(path = "/{id}")
+    public Producto updateNamepatchById(@PathVariable Long id,@RequestBody Producto productoPatch) {
+        Producto producto = productoRepositorio.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontro el Producto"));
+        producto.setNombreProducto(productoPatch.getNombreProducto());
+        return productoRepositorio.save(producto);
+    }
 
 }

@@ -57,7 +57,6 @@ public class ClienteCotrolador {
         cliente.setApellido(clienteDos.getApellido());
         cliente.setCorreo(clienteDos.getCorreo());
         clienteRepositorio.save(cliente);
-
         clienteRepositorio.deleteById(id);
     }
 
@@ -68,5 +67,6 @@ public class ClienteCotrolador {
         return clienteRepositorio.save(cliente);
 
     }
+
 
 }
