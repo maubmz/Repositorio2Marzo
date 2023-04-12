@@ -2,6 +2,7 @@ package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
+import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;

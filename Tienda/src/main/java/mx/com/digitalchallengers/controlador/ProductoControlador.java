@@ -39,13 +39,13 @@ public class ProductoControlador {
         System.out.println("producto = " + producto);
     }
 
+
     @PutMapping(path = "/{id}")
     public void updateById(@PathVariable Long id, @RequestBody Producto producto2){
         Producto producto = productoRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Producto no encontrado"));
         producto.setNombreProducto(producto2.getNombreProducto());
         producto.setPrecio(producto2.getPrecio());
         productoRepositorio.save(producto);
-        productoRepositorio.deleteById(id);
     }
 
     @PatchMapping(path = "/{id}")
