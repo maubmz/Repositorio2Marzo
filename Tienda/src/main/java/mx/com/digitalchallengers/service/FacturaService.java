@@ -34,7 +34,6 @@ public class FacturaService {
     }
 
     public void addProducto(Producto producto, Long idFactura, Long idProducto, int idCliente){
-
         List<Producto> productos = new ArrayList<>();
         Producto producto1=productoRepositorio.findById(idProducto).orElseThrow();
         productos.add(producto);

@@ -2,8 +2,10 @@ package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
+import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
+import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,8 @@ public class FacturaControlador {
     private FacturaRepositorio facturaRepositorio;
     @Autowired
     private ClienteRepositorio clienteRepositorio;
+    @Autowired
+    private ProductoRepositorio productoRepositorio;
 
     @GetMapping
     public List<Factura> findAllFactura(){
@@ -36,15 +41,22 @@ public class FacturaControlador {
     }
 
     @PostMapping(
-            value = "/{id}",
+            value = "/create",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura,@PathVariable int id){
+    public void addFactura(@RequestBody Factura factura, @RequestBody Producto producto){
+        List<Producto> productos=new ArrayList<>();
+        productos.add(producto);
+        factura.setProducto(productos);
+        productoRepositorio.save(producto);
         facturaRepositorio.save(factura);
         System.out.println("factura = " + factura);
     }
 
-
-
-
+    @PutMapping(path = "/{id}")
+    public void updateById(@PathVariable Long id, @RequestBody Factura facturaDos){
+        Factura factura = facturaRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente no encontrado"));
+        factura.setFechaCompra(facturaDos.getFechaCompra());
+        facturaRepositorio.save(factura);
+    }
 }

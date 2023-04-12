@@ -65,6 +65,9 @@ public class ClienteCotrolador {
     public Cliente updateNamepatchById(@PathVariable int id,@RequestBody Cliente clientePatch){
         Cliente cliente = clienteRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el CLiente"));
         cliente.setNombre(clientePatch.getNombre());
+        cliente.setApellido(clientePatch.getApellido());
+        cliente.setCorreo(clientePatch.getCorreo());
+        cliente.setFacturas(clientePatch.getFacturas());
         return clienteRepositorio.save(cliente);
 
     }
