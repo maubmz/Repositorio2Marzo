@@ -41,15 +41,20 @@ public class FacturaControlador {
     }
 
     @PostMapping(
-            value = "/create",
+            value = "/create/{id}",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura, @RequestBody Producto producto){
+    public void addFactura(@RequestBody Cliente cliente, @RequestBody Factura factura, @RequestBody Producto producto, @PathVariable int id){
         List<Producto> productos=new ArrayList<>();
         productos.add(producto);
         factura.setProducto(productos);
-        productoRepositorio.save(producto);
+        List<Factura> facturas=new ArrayList<>();
+        facturas.add(factura);
+        cliente=clienteRepositorio.findById(id).orElseThrow();
+        cliente.setFacturas(facturas);
+
         facturaRepositorio.save(factura);
+        clienteRepositorio.save(cliente);
         System.out.println("factura = " + factura);
     }
 

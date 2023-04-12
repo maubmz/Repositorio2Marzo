@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "factura")
 public class Factura {
     @Id
     @GeneratedValue(

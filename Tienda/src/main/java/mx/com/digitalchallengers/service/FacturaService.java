@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacturaService {
@@ -22,6 +23,8 @@ public class FacturaService {
     private ClienteRepositorio clienteRepositorio;
     @Autowired
     private ProductoRepositorio productoRepositorio;
+    @Autowired
+    private ProductoService productoService;
 
     public void addFactura(Factura factura, int id){
         Cliente cliente = clienteRepositorio.findById(id).orElseThrow();
@@ -46,5 +49,14 @@ public class FacturaService {
         cliente.setFacturas(facturas);
         clienteRepositorio.save(cliente);
         facturaRepositorio.save(factura);
+    }
+
+    public Factura addFactura(Factura factura){
+        Factura factura1=new Factura();
+        factura1.setFechaCompra(factura.getFechaCompra());
+        factura1.getProducto().addAll(factura.getProducto().stream().map(p ->{
+            Optional<Producto> producto=productoService.findProductoById(p.getProductoId());
+            producto.ge
+        }))
     }
 }
