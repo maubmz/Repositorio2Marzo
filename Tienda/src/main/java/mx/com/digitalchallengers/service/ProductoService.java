@@ -3,14 +3,14 @@ package mx.com.digitalchallengers.service;
 import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+@Service
 public class ProductoService {
     @Autowired
     private ProductoRepositorio productoRepositorio;
 
-    public Optional<Producto> findProductoById(Long id){
-        return productoRepositorio.findById(id);
+    public Producto findProductoById(Long id){
+        return productoRepositorio.findById(id).orElseThrow();
     }
 }

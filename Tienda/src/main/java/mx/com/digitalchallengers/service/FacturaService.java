@@ -9,11 +9,13 @@ import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FacturaService {
@@ -41,7 +43,7 @@ public class FacturaService {
         Producto producto1=productoRepositorio.findById(idProducto).orElseThrow();
         productos.add(producto);
         Factura factura = facturaRepositorio.findById(idFactura).orElseThrow();
-        factura.setProducto(productos);
+        factura.setProductos(productos);
         Cliente cliente = clienteRepositorio.findById(idCliente).orElseThrow();
         List<Factura> facturas = new ArrayList<>();
         facturas=cliente.getFacturas();
@@ -54,9 +56,11 @@ public class FacturaService {
     public Factura addFactura(Factura factura){
         Factura factura1=new Factura();
         factura1.setFechaCompra(factura.getFechaCompra());
-        factura1.getProducto().addAll(factura.getProducto().stream().map(p ->{
-            Optional<Producto> producto=productoService.findProductoById(p.getProductoId());
-            producto.ge
-        }))
+        factura1.getProductos().addAll(factura.getProductos().stream().map(p ->{
+            Producto producto=productoService.findProductoById(p.getProductoId());
+            producto.getFacturas().add(factura1);
+            return producto;
+        }).collect(Collectors.toList()));
+        return facturaRepositorio.save(factura1);
     }
 }

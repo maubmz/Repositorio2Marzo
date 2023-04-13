@@ -1,6 +1,7 @@
 package mx.com.digitalchallengers.entidades;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,5 +49,5 @@ public class Factura {
                     referencedColumnName = "id_producto"
             )
     )
-    private List<Producto> producto;
+    private List<Producto> productos;
 }
