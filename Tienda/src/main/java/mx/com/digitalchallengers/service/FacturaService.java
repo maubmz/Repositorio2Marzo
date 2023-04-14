@@ -7,10 +7,14 @@ import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacturaService {
@@ -23,28 +27,52 @@ public class FacturaService {
 
     public void addFactura(Factura factura, int id){
         Cliente cliente = clienteRepositorio.findById(id).orElseThrow();
+        factura.setCliente(cliente);
+        factura = addProductoFactura(factura);
         List<Factura> facturas = new ArrayList<>();
-        if(cliente.getFacturas().isEmpty()){
-            facturas.add(factura);
-        }
         facturas = cliente.getFacturas();
         facturas.add(factura);
         cliente.setFacturas(facturas);
-        clienteRepositorio.save(cliente);
         facturaRepositorio.save(factura);
     }
 
-    public void addProducto(Long idProducto, Long idFactura){
-        Producto producto = productoRepositorio.findById(idProducto).orElseThrow();
+    public void addProducto(List<Integer> productosK, Long idFactura){
         Factura factura = facturaRepositorio.findById(idFactura).orElseThrow();
         List<Producto> productos = new ArrayList<>();
-        if(factura.getProducto().isEmpty()){
-            productos.add(producto);
+        productos = factura.getProductos();
+        for (Integer p:productosK) {
+            productos.add(productoRepositorio.findById(Long.valueOf(p)).orElseThrow());
         }
-        productos = factura.getProducto();
-        productos.add(producto);
-        factura.setProducto(productos);
+        factura.setProductos(productos);
+        //facturaRepositorio.save(factura);
+    }
+
+    public Factura addProductoFactura(Factura factura){
+        List<Producto> productos = new ArrayList<>();
+        List<Long> productos2 = new ArrayList<>(factura.getProductos().size());
+        productos = factura.getProductos();
+        for (Producto p: productos) {
+            //System.out.println("ciclo");
+            productos2.add(p.getProductoId());
+        }
+        productos.removeAll(productos);
+        for (Long p:productos2) {
+            productos.add(productoRepositorio.findById(p).orElseThrow());
+        }
+        factura.setProductos(productos);
+        return factura;
+    }
+
+    public void updateFactura(Factura facturaUpd,Long id){
+        Factura factura = facturaRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Factura no encontrada"));
+        Cliente cliente = clienteRepositorio.findById(facturaUpd.getCliente().getClienteId()).orElseThrow(()->new ResponseStatusException
+                (HttpStatus.NOT_FOUND,"Cliente no encontrado"));
+        factura.setCliente(cliente);
+        factura.setFechaCompra(facturaUpd.getFechaCompra());
+        Factura tempFac = addProductoFactura(facturaUpd);
+        factura.setProductos(tempFac.getProductos());
         facturaRepositorio.save(factura);
     }
+
 
 }

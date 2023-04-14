@@ -1,5 +1,6 @@
 package mx.com.digitalchallengers.controlador;
 
+import lombok.extern.slf4j.Slf4j;
 import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.entidades.Producto;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @RestController
 @Controller
 @Service
+@Slf4j
 public class FacturaControlador {
 
     @Autowired
@@ -44,10 +46,16 @@ public class FacturaControlador {
             value = "/{id}",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura,@PathVariable Integer id){
+
+    public void addFactura(@RequestBody Factura factura, @PathVariable Integer id){
         facturaService.addFactura(factura,id);
-        System.out.println("factura = " + factura);
     }
 
-
+    @PutMapping(
+            value = "/{id}",
+            consumes = "application/json"
+    )
+    public void updateFactura(@RequestBody Factura factura,@PathVariable Long id){
+            facturaService.updateFactura(factura,id);
+    }
 }

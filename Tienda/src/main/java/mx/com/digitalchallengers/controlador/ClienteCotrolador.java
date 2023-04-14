@@ -58,7 +58,7 @@ public class ClienteCotrolador {
         cliente.setCorreo(clienteDos.getCorreo());
         clienteRepositorio.save(cliente);
 
-        clienteRepositorio.deleteById(id);
+        //clienteRepositorio.deleteById(id);
     }
 
     @PatchMapping(path = "/{id}")

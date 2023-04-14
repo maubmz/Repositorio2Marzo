@@ -1,6 +1,7 @@
 package mx.com.digitalchallengers.entidades;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "factura")
 public class Factura {
     @Id
     @GeneratedValue(
@@ -34,7 +36,7 @@ public class Factura {
     private Cliente cliente;
 
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
     )
     @JoinTable(
             name = "producto_factura",
@@ -47,5 +49,6 @@ public class Factura {
                     referencedColumnName = "id_producto"
             )
     )
-    private List<Producto> producto;
+    //@JsonIgnore
+    private List<Producto> productos;
 }
