@@ -26,7 +26,7 @@ public class Factura {
     private String fechaCompra;
 
     @ManyToOne(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
     )
      @JoinColumn(
             name = "id_cliente1",

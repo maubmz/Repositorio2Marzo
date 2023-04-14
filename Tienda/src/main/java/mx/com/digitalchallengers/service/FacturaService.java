@@ -1,5 +1,6 @@
 package mx.com.digitalchallengers.service;
 
+import lombok.extern.slf4j.Slf4j;
 import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.entidades.Producto;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class FacturaService {
     @Autowired
@@ -53,14 +55,20 @@ public class FacturaService {
         facturaRepositorio.save(factura);
     }
 
-    public Factura addFactura(Factura factura){
+    public void guardarFactura(Factura factura, int id){
         Factura factura1=new Factura();
+        factura1.setCliente(clienteRepositorio.findById(id).orElseThrow());
         factura1.setFechaCompra(factura.getFechaCompra());
-        factura1.getProductos().addAll(factura.getProductos().stream().map(p ->{
-            Producto producto=productoService.findProductoById(p.getProductoId());
-            producto.getFacturas().add(factura1);
-            return producto;
-        }).collect(Collectors.toList()));
-        return facturaRepositorio.save(factura1);
+        factura1.getProductos()
+                .addAll(factura
+                        .getProductos()
+                        .stream()
+                        .map(p ->{
+                            Producto producto=productoRepositorio.findById(p.getProductoId()).orElseThrow();
+                            producto.getFacturas().add(factura1);
+                            factura1.getProductos().add(p);
+                            return p;
+                        }).collect(Collectors.toList()));
+        facturaRepositorio.save(factura1);
     }
 }
