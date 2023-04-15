@@ -1,7 +1,5 @@
 package mx.com.digitalchallengers.controlador;
 
-import mx.com.digitalchallengers.entidades.Cliente;
-import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +52,6 @@ public class ProductoControlador {
         producto.setPrecio(productoDos.getPrecio());
         productoRepositorio.save(producto);
     }
+
 }
 

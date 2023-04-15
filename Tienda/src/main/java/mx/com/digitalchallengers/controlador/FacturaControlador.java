@@ -1,9 +1,7 @@
 package mx.com.digitalchallengers.controlador;
 
 import lombok.extern.slf4j.Slf4j;
-import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
-import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
@@ -16,11 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequestMapping("/factura")
 @RestController

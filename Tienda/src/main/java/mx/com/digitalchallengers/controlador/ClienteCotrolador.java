@@ -1,14 +1,21 @@
 package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
+import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
+import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequestMapping("/cliente")
@@ -18,6 +25,8 @@ import java.util.Optional;
 public class ClienteCotrolador {
     @Autowired
     private ClienteRepositorio clienteRepositorio;
+    @Autowired
+    private ProductoRepositorio productoRepositorio;
 
     @GetMapping
     public List<Cliente> findAllClient(){
@@ -71,5 +80,21 @@ public class ClienteCotrolador {
         return clienteRepositorio.save(cliente);
 
     }
+
+    @GetMapping(value = "/productos")
+    public List<Producto> getProductos(){
+        String url="http://localhost:8080/producto";
+        RestTemplate restTemplate=new RestTemplate();
+        List productos=restTemplate.getForObject(url, List.class);
+        return productos;
+    }
+
+    @PostMapping(value = "/createproducto")
+    public void addProducto(){
+        String url="http://localhost:8080/producto/create";
+        RestTemplate restTemplate=new RestTemplate();
+        restTemplate.postForObject(url, String.class);
+    }
+
 
 }
