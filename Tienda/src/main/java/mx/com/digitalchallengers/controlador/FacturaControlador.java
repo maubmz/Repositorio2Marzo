@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -57,5 +58,24 @@ public class FacturaControlador {
     )
     public void updateFactura(@RequestBody Factura factura,@PathVariable Long id){
             facturaService.updateFactura(factura,id);
+    }
+
+    @GetMapping(value = "/getAllProducto")
+    public List<Producto> getfindAllProducto(){
+        String url = "http://localhost:8080/producto";
+        RestTemplate restTemplate = new RestTemplate();
+        List<Producto> productos = restTemplate.getForObject(url,List.class);
+        return productos;
+    }
+
+    @PostMapping(
+            value = "/añadirproducto",
+            consumes = "application/json"
+    )
+    public Producto addProducto(@RequestBody Producto producto){
+        String url = "http://localhost:8080/producto/create";
+        RestTemplate restTemplate = new RestTemplate();
+        Producto nuevo = restTemplate.postForObject(url,producto,Producto.class);
+        return nuevo;
     }
 }
