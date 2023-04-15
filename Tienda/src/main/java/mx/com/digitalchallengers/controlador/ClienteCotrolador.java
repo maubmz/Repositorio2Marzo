@@ -93,7 +93,7 @@ public class ClienteCotrolador {
     public void addProducto(){
         String url="http://localhost:8080/producto/create";
         RestTemplate restTemplate=new RestTemplate();
-        restTemplate.postForObject(url, String.class);
+        restTemplate.postForObject(url, @RequestBody);
     }
 
 
