@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
 
 @Service
-public class FacturaService {//No importa :D
+public class FacturaServices {
     @Autowired
     private FacturaRepositorio facturaRepositorio;
     @Autowired
@@ -39,6 +39,5 @@ public class FacturaService {//No importa :D
     public void updateFactura(Factura factura, int id){
 
     }
-
 
 }

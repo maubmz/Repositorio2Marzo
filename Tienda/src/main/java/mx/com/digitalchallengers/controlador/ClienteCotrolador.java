@@ -7,8 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequestMapping("/cliente")
@@ -67,6 +71,29 @@ public class ClienteCotrolador {
         cliente.setNombre(clientePatch.getNombre());
         return clienteRepositorio.save(cliente);
 
+    }
+
+    @GetMapping("/callProducto")
+    public void getProducto() {
+        String uri = "http://localhost:8080/producto";
+        RestTemplate restTemplate = new RestTemplate();
+        String resultado = restTemplate.getForObject(uri, String.class);
+        System.out.println(resultado);
+    }
+
+    @GetMapping("/urlExterno")
+    public Object getJson(){
+        String url = "https://jsonplaceholder.typicode.com/todos/1?fbclid=IwAR0qRd-niFl8CPpruvWD1wrMC0R6xzA-nLk-7Sz9nIUpYOMdUN2s9ksNJo4";
+        RestTemplate restTemplate = new RestTemplate();
+
+        Object json = restTemplate.getForObject(url, Object.class);
+        return json;
+    }
+
+    @PostMapping("/urlexterno/create")
+    public void setJson() {
+        String url = "https://jsonplaceholder.typicode.com/todos/1?fbclid=IwAR0qRd-niFl8CPpruvWD1wrMC0R6xzA-nLk-7Sz9nIUpYOMdUN2s9ksNJo4";
+        
     }
 
 }

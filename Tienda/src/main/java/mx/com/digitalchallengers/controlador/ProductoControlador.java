@@ -20,9 +20,6 @@ public class ProductoControlador {
     @Autowired
     private ProductoRepositorio productoRepositorio;
 
-    @Autowired
-    private FacturaControlador facturaControlador;
-
     @GetMapping
     public List<Producto> findAllProducto() {
         return productoRepositorio.findAll();
