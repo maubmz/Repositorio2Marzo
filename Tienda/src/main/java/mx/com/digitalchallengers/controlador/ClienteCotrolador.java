@@ -6,6 +6,7 @@ import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.lang.reflect.Array;
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -89,12 +91,12 @@ public class ClienteCotrolador {
         return productos;
     }
 
-    @PostMapping(value = "/createproducto")
-    public void addProducto(){
-        String url="http://localhost:8080/producto/create";
-        RestTemplate restTemplate=new RestTemplate();
-        restTemplate.postForObject(url, @RequestBody);
+
+    @PostMapping(value =  "/create/external/producto", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Producto> addEmployee(@RequestBody Producto producto) throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        URI uri=new URI("http://localhost:8080/producto/create");
+        ResponseEntity<Producto> result = restTemplate.postForEntity(uri, producto, Producto.class);
+        return result;
     }
-
-
 }
