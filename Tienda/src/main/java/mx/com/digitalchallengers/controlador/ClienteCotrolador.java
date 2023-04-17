@@ -56,7 +56,6 @@ public class ClienteCotrolador {
 
     @DeleteMapping(path = "/{id}")
     public void deleteById(@PathVariable int id){
-
         clienteRepositorio.deleteById(id);
     }
 

@@ -60,4 +60,10 @@ public class FacturaControlador {
         factura.setFechaCompra(facturaDos.getFechaCompra());
         facturaRepositorio.save(factura);
     }
+
+    @DeleteMapping(path = "delete/{id}")
+    public void deleteById(@PathVariable Long id){
+        facturaRepositorio.deleteById(id);
+    }
+
 }

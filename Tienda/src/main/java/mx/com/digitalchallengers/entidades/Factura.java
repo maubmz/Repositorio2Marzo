@@ -36,7 +36,7 @@ public class Factura {
     private Cliente cliente;
 
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
     )
     @JoinTable(
             name = "producto_factura",
