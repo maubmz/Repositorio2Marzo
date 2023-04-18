@@ -1,13 +1,18 @@
 package mx.com.digitalchallengers.service;
 
+import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,8 +41,29 @@ public class FacturaServices {
         facturaRepositorio.save(factura1);
     }
 
-    public void updateFactura(Factura factura, int id){
+    public void updateFactura(Long id, Factura factura){
+        Factura factura1 = facturaRepositorio.findById(id).orElseThrow(()->
+                new ResponseStatusException(HttpStatus.NOT_FOUND,"Factura no encontrada"));
+        Cliente cliente = clienteRepositorio.findById(factura.getCliente().getClienteId()).orElseThrow(()->new ResponseStatusException
+                (HttpStatus.NOT_FOUND,"Cliente no encontrado"));
+        factura1.setCliente(cliente);
+        factura1.setFechaCompra(factura.getFechaCompra());
+
+        //Agregar productos a Factura
+        List<Producto> productos = new ArrayList<>();
+        productos = factura.getProductos();//se guardan los productos de la factura
+        List<Long> productosId = new ArrayList<>();//Se guardaran los Id's de los productos
+        for (Producto p: productos) {
+            productosId.add(p.getProductoId());
+        }
+        productos.removeAll(productos);
+        for(Long i : productosId){
+            productos.add(productoRepositorio.findById(i).orElseThrow());
+        }
+        factura.setProductos(productos);
+        facturaRepositorio.save(factura);
 
     }
+
 
 }

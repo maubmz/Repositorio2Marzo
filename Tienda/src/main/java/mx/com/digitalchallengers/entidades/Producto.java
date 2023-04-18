@@ -29,7 +29,7 @@ public class Producto {
     private Integer precio;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "productos",cascade =CascadeType.ALL)
+    @ManyToMany(mappedBy = "productos",cascade =CascadeType.MERGE)
     private List<Factura> facturas = new ArrayList<>();
 
 }

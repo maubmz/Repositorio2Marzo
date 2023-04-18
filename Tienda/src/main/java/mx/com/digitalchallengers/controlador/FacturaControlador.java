@@ -46,9 +46,12 @@ public class FacturaControlador {
 
     }
 
-    @PutMapping("/update/{idFactura}/{id}")
-    public void updateById(@PathVariable int idFactura, @RequestBody Factura factura,@PathVariable int id){
-        
+    @PutMapping(
+            value = "/{id}",
+            consumes = "application/json")
+    public void updateById(@PathVariable Long id, @RequestBody Factura factura){
+        facturaServices.updateFactura(id, factura);
+        log.info("Update Factura");
     }
 
 }

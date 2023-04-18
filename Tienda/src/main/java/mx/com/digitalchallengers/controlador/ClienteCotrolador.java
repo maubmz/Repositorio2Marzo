@@ -74,11 +74,12 @@ public class ClienteCotrolador {
     }
 
     @GetMapping("/callProducto")
-    public void getProducto() {
+    public Object getProducto() {
         String uri = "http://localhost:8080/producto";
         RestTemplate restTemplate = new RestTemplate();
-        String resultado = restTemplate.getForObject(uri, String.class);
+        Object resultado = restTemplate.getForObject(uri, Objects.class);
         System.out.println(resultado);
+        return resultado;
     }
 
     @GetMapping("/urlExterno")
