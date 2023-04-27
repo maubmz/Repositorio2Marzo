@@ -1,0 +1,34 @@
+
+<head>
+    <meta charset='utf-8'>
+    <title>Calculadora</title>
+</head>
+    <div class="Calculadora">
+        <input id="res" class="resultado" type="text" placeholder="0" [value]="resultado">{{resultado}}
+            <h1>Calculadora</h1>
+                    <button (click)="borrar()">C</button>
+                    <button (click)="addNumber('()')">()</button>
+                    <button (click)="addNumber('%')">%</button>
+                    <button (click)="addNumber('/')">/</button>
+
+                    <button (click)="addNumber('7')">7</button>
+                    <button (click)="addNumber('8')">8</button>
+                    <button (click)="addNumber('9')">9</button>
+                    <button (click)="addNumber('*')">X</button>
+
+                    <button (click)="addNumber('4')">4</button>
+                    <button (click)="addNumber('5')">5</button>
+                    <button (click)="addNumber('6')">6</button>
+                    <button (click)="addNumber('-')">-</button>
+
+                    <button (click)="addNumber('1')">1</button>
+                    <button (click)="addNumber('2')">2</button>
+                    <button (click)="addNumber('3')">3</button>
+                    <button (click)="addNumber('+')">+</button>
+
+                    <button (click)="borrarNumero()">Del</button>
+                    <button (click)="addNumber('0')">0</button>
+                    <button (click)="addNumber('.')">.</button>
+                    <button (click)="calculoFinal()">=</button>
+    </div>
+
