@@ -1,8 +1,10 @@
 package mx.com.digitalchallengers.controlador;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
+import mx.com.digitalchallengers.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class ProductoControlador {
 
     @Autowired
     private FacturaControlador facturaControlador;
+    @Autowired
+    private ProductoService productoService;
 
     @GetMapping
     public List<Producto> findAllProducto() {
@@ -49,6 +53,16 @@ public class ProductoControlador {
         producto.setNombreProducto(productoUpdate.getNombreProducto());
         producto.setPrecio(productoUpdate.getPrecio());
         productoRepositorio.save(producto);
+    }
+
+    @DeleteMapping(
+            value = "/{id}"
+    )
+    public void deleteFactura(@PathVariable Long id){
+        Producto producto = productoRepositorio.findById(id).orElseThrow();
+        List<Factura> facturas = productoService.eliminarProducto(id);
+        productoRepositorio.deleteById(id);
+        //return productoService.reorganizarFactura(facturas,producto);
     }
 
 

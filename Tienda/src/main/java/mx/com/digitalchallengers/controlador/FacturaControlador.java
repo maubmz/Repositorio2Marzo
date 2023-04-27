@@ -60,6 +60,13 @@ public class FacturaControlador {
             facturaService.updateFactura(factura,id);
     }
 
+    @DeleteMapping(
+            value = "/{id}"
+    )
+    public void deleteFactura(@PathVariable Long id){
+        facturaRepositorio.deleteById(id);
+    }
+
     @GetMapping(value = "/getAllProducto")
     public List<Producto> getfindAllProducto(){
         String url = "http://localhost:8080/producto";

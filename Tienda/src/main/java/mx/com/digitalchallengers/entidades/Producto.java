@@ -28,8 +28,8 @@ public class Producto {
     private Integer precio;
 
     @ManyToMany(
-            mappedBy = "productos",
-            cascade = CascadeType.MERGE
+             mappedBy = "productos"
+             //cascade = CascadeType.ALL
     )
 
     @JsonIgnore
