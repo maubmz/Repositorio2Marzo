@@ -1,16 +1,15 @@
 package mx.com.digitalchallengers.controlador;
 
-import mx.com.digitalchallengers.entidades.Cliente;
+import lombok.extern.slf4j.Slf4j;
 import mx.com.digitalchallengers.entidades.Factura;
-import mx.com.digitalchallengers.entidades.Producto;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
+import mx.com.digitalchallengers.repositorios.ProductoRepositorio;
+import mx.com.digitalchallengers.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,12 +18,17 @@ import java.util.Optional;
 @RestController
 @Controller
 @Service
+@Slf4j
 public class FacturaControlador {
 
     @Autowired
     private FacturaRepositorio facturaRepositorio;
     @Autowired
     private ClienteRepositorio clienteRepositorio;
+    @Autowired
+    private ProductoRepositorio productoRepositorio;
+    @Autowired
+    private FacturaService facturaService;
 
     @GetMapping
     public List<Factura> findAllFactura(){
@@ -41,9 +45,11 @@ public class FacturaControlador {
             consumes = "application/json"
     )
     public void addFactura(@RequestBody Factura factura,@PathVariable int id){
-        facturaRepositorio.save(factura);
+        log.info("Se inicia addFactura");
+        facturaService.addFactura(factura,id);
         System.out.println("factura = " + factura);
     }
+
 
 
 }

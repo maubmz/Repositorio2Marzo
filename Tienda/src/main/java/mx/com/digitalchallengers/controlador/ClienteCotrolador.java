@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
@@ -57,16 +58,35 @@ public class ClienteCotrolador {
         cliente.setApellido(clienteDos.getApellido());
         cliente.setCorreo(clienteDos.getCorreo());
         clienteRepositorio.save(cliente);
-        clienteRepositorio.deleteById(id);
+        //clienteRepositorio.deleteById(id);
     }
 
     @PatchMapping(path = "/{id}")
     public Cliente updateNamepatchById(@PathVariable int id,@RequestBody Cliente clientePatch){
-        Cliente cliente = clienteRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el CLiente"));
+        Cliente cliente = clienteRepositorio.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el Cliente"));
         cliente.setNombre(clientePatch.getNombre());
         return clienteRepositorio.save(cliente);
 
     }
 
+    @GetMapping("/callProducto")
+    public void getProducto(){
+        String uri = "http://localhost:8080/producto";
+        RestTemplate restTemplate = new RestTemplate();
+        String resultado = restTemplate.getForObject(uri, String.class);
+        System.out.println(resultado);
+    }
 
+    @GetMapping("/urlExterno")
+    public Object getJson(){
+        String url = "";
+        RestTemplate restTemplate = new RestTemplate();
+        Object json = restTemplate.getForObject(url, Object.class);
+        return json;
+    }
+
+    /*@PostMapping("/urlExterno/create")
+    public void setJson(){
+        String url = "";
+    }*/
 }

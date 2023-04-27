@@ -1,13 +1,13 @@
 package mx.com.digitalchallengers.entidades;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -15,12 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "factura")
 public class Factura {
     @Id
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    @Column(name = "id_factura",unique = true, nullable = false)
+    @Column(name = "id_factura", nullable = false)
     private Long facturaId;
     private String fechaCompra;
 
@@ -35,7 +36,7 @@ public class Factura {
     private Cliente cliente;
 
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
     )
     @JoinTable(
             name = "producto_factura",
@@ -49,5 +50,7 @@ public class Factura {
             )
     )
 
-    private List<Producto> producto;
+    private List<Producto> productos;
+
+
 }

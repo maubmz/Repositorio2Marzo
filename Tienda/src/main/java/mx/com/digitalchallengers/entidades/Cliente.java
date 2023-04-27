@@ -20,7 +20,7 @@ public class Cliente {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    @Column(name = "id_cliente",unique = true, nullable = false)
+    @Column(name = "id_cliente", nullable = false)
     private Integer clienteId;
     @Column(name="nombre")
     private String nombre;
@@ -31,8 +31,7 @@ public class Cliente {
 
     @OneToMany(
             mappedBy = "cliente",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            cascade = CascadeType.ALL
     )
     @JsonManagedReference
     private List<Factura> facturas;

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,21 +25,29 @@ public class FacturaService {
     @Autowired
     private ProductoRepositorio productoRepositorio;
 
+
+
     public void addFactura(Factura factura, int id){
         Cliente cliente = clienteRepositorio.findById(id).orElseThrow();
+        factura.setCliente(cliente);
         List<Factura> facturas = new ArrayList<>();
         facturas = cliente.getFacturas();
         facturas.add(factura);
         cliente.setFacturas(facturas);
-        clienteRepositorio.save(cliente);
         facturaRepositorio.save(factura);
     }
 
-    public void addProducto(Producto producto, Long id) {
-        Factura factura = facturaRepositorio.findById(id).orElseThrow();
+    public void addProducto(List<Integer> productosQ, Long idFactura) {
+        Factura factura = facturaRepositorio.findById(idFactura).orElseThrow();
         List<Producto> productos = new ArrayList<>();
-        productos = factura.getProducto();
-        productos.add(producto);
+        productos = factura.getProductos();
+        for(Integer q:productosQ){
+            productos.add(productoRepositorio.findById(Long.valueOf(q)).orElseThrow());
+        }
+        factura.setProductos(productos);
+
         
     }
+
+
 }
