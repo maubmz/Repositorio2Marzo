@@ -1,6 +1,7 @@
 package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
+import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@RequestMapping("/cliente")
+@RequestMapping(value = "/cliente")
 @RestController
 @Controller
 @Service
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteCotrolador {
     @Autowired
     private ClienteRepositorio clienteRepositorio;
@@ -29,7 +30,7 @@ public class ClienteCotrolador {
     }
 
     @PostMapping(
-            value = "/create",
+            value = "/clientes",
             consumes = "application/json"
     )
     public void addCliente(@RequestBody Cliente cliente){

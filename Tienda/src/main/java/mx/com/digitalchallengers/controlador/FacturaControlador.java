@@ -1,7 +1,9 @@
 package mx.com.digitalchallengers.controlador;
 
 import lombok.extern.slf4j.Slf4j;
+import mx.com.digitalchallengers.entidades.Cliente;
 import mx.com.digitalchallengers.entidades.Factura;
+import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import mx.com.digitalchallengers.repositorios.FacturaRepositorio;
 import mx.com.digitalchallengers.service.FacturaServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +14,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("/factura")
+@RequestMapping(value = "/factura")
 @RestController
 @Controller
 @Service
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 public class FacturaControlador {
 
     @Autowired
     private FacturaRepositorio facturaRepositorio;
 
     @Autowired
+    private ClienteRepositorio clienteRepositorio;
+
+    @Autowired
     private FacturaServices facturaServices;
 
 
-    @GetMapping
+    @GetMapping("getFacturas")
     public List<Factura> findAllFactura(){
         return facturaRepositorio.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findBy/{id}")
     public Optional<Factura> findByIdFactura(@PathVariable (value = "id") Long id){
         return facturaRepositorio.findById(id);
     }
@@ -43,7 +49,12 @@ public class FacturaControlador {
     public void addFactura(@RequestBody Factura factura,@PathVariable Integer id){
         log.info("Creacion Factura");
         facturaServices.saveFactura(factura, id);
+    }
 
+    @GetMapping("/facturasFindIdCliente/{id}")
+    public List<Factura> facturasFindIdCliente(@PathVariable (value = "id") int id) {
+        Optional<Cliente> cliente = clienteRepositorio.findById(id);
+        return cliente.get().getFacturas();
     }
 
     @PutMapping(
