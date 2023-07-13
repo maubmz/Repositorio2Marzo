@@ -44,24 +44,24 @@ public class FacturaServices {
     public void updateFactura(Long id, Factura factura){
         Factura factura1 = facturaRepositorio.findById(id).orElseThrow(()->
                 new ResponseStatusException(HttpStatus.NOT_FOUND,"Factura no encontrada"));
-        Cliente cliente = clienteRepositorio.findById(factura.getCliente().getClienteId()).orElseThrow(()->new ResponseStatusException
-                (HttpStatus.NOT_FOUND,"Cliente no encontrado"));
-        factura1.setCliente(cliente);
+//        Cliente cliente = clienteRepositorio.findById(factura.getCliente().getClienteId()).orElseThrow(()->new ResponseStatusException
+//                (HttpStatus.NOT_FOUND,"Cliente no encontrado"));
+//        factura1.setCliente(cliente);
         factura1.setFechaCompra(factura.getFechaCompra());
 
         //Agregar productos a Factura
-        List<Producto> productos = new ArrayList<>();
-        productos = factura.getProductos();//se guardan los productos de la factura
+        List<Producto> productos = new ArrayList<Producto>();
+        productos = factura.getProductos();//se guardan los productos de la factura en el list
         List<Long> productosId = new ArrayList<>();//Se guardaran los Id's de los productos
         for (Producto p: productos) {
             productosId.add(p.getProductoId());
         }
-        productos.removeAll(productos);
+        productos.removeAll(productos);//productos se vacia
         for(Long i : productosId){
             productos.add(productoRepositorio.findById(i).orElseThrow());
         }
-        factura.setProductos(productos);
-        facturaRepositorio.save(factura);
+        factura1.setProductos(productos);
+        facturaRepositorio.save(factura1);
 
     }
 

@@ -43,12 +43,12 @@ public class FacturaControlador {
     }
 
     @PostMapping(
-            value = "/create/{id}",
+            value = "/create/{idCliente}",
             consumes = "application/json"
     )
-    public void addFactura(@RequestBody Factura factura,@PathVariable Integer id){
+    public void addFactura(@RequestBody Factura factura,@PathVariable Integer idCliente){
         log.info("Creacion Factura");
-        facturaServices.saveFactura(factura, id);
+        facturaServices.saveFactura(factura, idCliente);
     }
 
     @GetMapping("/facturasFindIdCliente/{id}")

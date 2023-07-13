@@ -1,7 +1,6 @@
 package mx.com.digitalchallengers.controlador;
 
 import mx.com.digitalchallengers.entidades.Cliente;
-import mx.com.digitalchallengers.entidades.Factura;
 import mx.com.digitalchallengers.repositorios.ClienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,6 +47,12 @@ public class ClienteCotrolador {
         return clienteRepositorio.findByNombreContaining(nombre);
     }
 
+//    PRUEBA
+//    @GetMapping("/findByNames")
+//    public String findByNames(@RequestParam String nombre){
+//        return nombre;
+//    }
+
     @DeleteMapping(path = "/{id}")
     public void deleteById(@PathVariable int id){
 
@@ -62,8 +67,6 @@ public class ClienteCotrolador {
         cliente.setApellido(clienteDos.getApellido());
         cliente.setCorreo(clienteDos.getCorreo());
         clienteRepositorio.save(cliente);
-
-        clienteRepositorio.deleteById(id);
     }
 
     @PatchMapping(path = "/{id}")
@@ -74,11 +77,12 @@ public class ClienteCotrolador {
 
     }
 
+//    Error
     @GetMapping("/callProducto")
     public Object getProducto() {
-        String uri = "http://localhost:8080/producto";
+        String url = "http://localhost:8080/producto";
         RestTemplate restTemplate = new RestTemplate();
-        Object resultado = restTemplate.getForObject(uri, Objects.class);
+        Object resultado = restTemplate.getForObject(url, Objects.class);
         System.out.println(resultado);
         return resultado;
     }
@@ -92,10 +96,6 @@ public class ClienteCotrolador {
         return json;
     }
 
-    @PostMapping("/urlexterno/create")
-    public void setJson() {
-        String url = "https://jsonplaceholder.typicode.com/todos/1?fbclid=IwAR0qRd-niFl8CPpruvWD1wrMC0R6xzA-nLk-7Sz9nIUpYOMdUN2s9ksNJo4";
-        
-    }
+
 
 }
