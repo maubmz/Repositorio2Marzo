@@ -3,6 +3,8 @@ package mx.com.digitalchallengers.yml.PokemonApi;
 
 import mx.com.digitalchallengers.yml.PokemonApi.EntidadesColorSection.PokemonColor;
 import mx.com.digitalchallengers.yml.PokemonApi.EntidadesColorSection.PokemonColorResults;
+import mx.com.digitalchallengers.yml.PokemonApi.EntidadesFormsSection.PokemonForms;
+import mx.com.digitalchallengers.yml.PokemonApi.EntidadesRegionSection.PokemonRegion;
 import mx.com.digitalchallengers.yml.Url;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,31 @@ public class PokemonControlador {
         urlPokemon = urlPokemon.concat(section).concat("/").concat(color);
         RestTemplate restTemplate = new RestTemplate();
         PokemonColorResults pokemon = restTemplate.getForObject(urlPokemon, PokemonColorResults.class);
+        return pokemon;
+    }
+
+    @GetMapping(value = "/Forms/{link}/{section}/{nameId}")
+    public PokemonForms findObjectPokemonForms(
+            @PathVariable Integer link,
+            @PathVariable String section,
+            @PathVariable String nameId) {
+        String urlPokemon = url.getHosts().get(link-1);
+        urlPokemon = urlPokemon.concat(section).concat("/").concat(nameId);
+        RestTemplate restTemplate = new RestTemplate();
+        PokemonForms pokemon = restTemplate.getForObject(urlPokemon, PokemonForms.class);
+        return pokemon;
+    }
+
+    @GetMapping(value = "/Regions/{link}/{section}/{nameId}")
+    public PokemonRegion findObjectPokemonRegion(
+            @PathVariable Integer link,
+            @PathVariable String section,
+            @PathVariable String nameId
+    ) {
+        String urlPokemon = url.getHosts().get(link - 1);
+        urlPokemon = urlPokemon.concat(section).concat("/").concat(nameId);
+        RestTemplate restTemplate = new RestTemplate();
+        PokemonRegion pokemon = restTemplate.getForObject(urlPokemon, PokemonRegion.class);
         return pokemon;
     }
 
